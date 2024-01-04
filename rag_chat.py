@@ -55,7 +55,7 @@ def main():
             st.stop()
         files_text = get_text(uploaded_files)
         text_chunks = get_text_chunks(files_text)
-        vetorestore = get_vectorstore(text_chunks)
+        vetorestore = get_vectorstore(text_chunks,openai_api_key)
 
         st.session_state.conversation = conversation_chat(vetorestore, openai_api_key)
 
@@ -118,8 +118,8 @@ def get_text_chunks(text):
     chunks = text_splitter.split_documents(text)
     return chunks
 
-def get_vectorstore(text_chunks):
-    embed_model = OpenAIEmbeddings(model='text-embedding-ada-002')
+def get_vectorstore(text_chunks,api_key):
+    embed_model = OpenAIEmbeddings(model='text-embedding-ada-002',openai_api_key = api_key)
     vectordb = FAISS.from_documents(text_chunks, embed_model)
     return vectordb
 
