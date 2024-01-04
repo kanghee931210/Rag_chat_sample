@@ -28,9 +28,6 @@ import yaml
 import numpy as np
 from loguru import logger
 
-with open('Config.yaml') as f:
-    cfg = yaml.load(f, Loader=yaml.FullLoader)
-
 def main():
     st.set_page_config(
         page_title = 'Hist rag chat make_kh',
