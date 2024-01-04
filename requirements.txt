@@ -1,4 +1,5 @@
-langchain
+tiktoken
+langchain==0.0.349
 faiss-cpu
 openai
 pypdf
